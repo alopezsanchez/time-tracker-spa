@@ -8,6 +8,7 @@ import calculateOvertimeAveragePerDay from "../../utils/calculateOvertimeAverage
 import CustomCard from "./components/CustomCard";
 import SearchUser from "./components/SearchUser";
 import WorkingHoursPerDayChart from "./components/WorkingHoursPerDayChart";
+import CreateInputButton from "./components/CreateInputButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,6 +114,7 @@ const DashboardPage = () => {
           </div>
         </div>
       )}
+      <CreateInputButton />
     </div>
   );
 };
