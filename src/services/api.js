@@ -9,6 +9,26 @@ export function fetchUsers() {
   }
 }
 
+export function fetchInputs() {
+  try {
+    return fetch(`${API_URL}/api/v1/inputs`).then((response) =>
+      response.json()
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
+export function fetchInputsByUser(userId) {
+  try {
+    return fetch(`${API_URL}/api/v1/inputs/${userId}`).then((response) =>
+      response.json()
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
 export function createInput(payload) {
   try {
     return fetch(`${API_URL}/api/v1/inputs`, {
