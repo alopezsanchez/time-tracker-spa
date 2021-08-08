@@ -1,29 +1,38 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import moment from "moment";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import { createInput } from "../../../services/api";
 import LoadingButton from "./LoadingButton";
 import Notification from "./Notification";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-}));
 
 const transformFormValuesToApiPayload = (values) => ({
   user: values.user._id,
   startAt: +new Date(values.startAt),
   endAt: +new Date(values.endAt),
 });
+
+const useStyles = makeStyles((theme) => ({
+  formElement: {
+    margin: "30px",
+  },
+  actions: {
+    alignItems: "center",
+  },
+  cancelButton: {
+    marginLeft: "20px",
+  },
+  link: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
+  },
+}));
 
 function InputForm({ users }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,8 +60,7 @@ function InputForm({ users }) {
   };
 
   return (
-    <div className={classes.root}>
-      <h1>Input working hours</h1>
+    <>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -78,7 +86,7 @@ function InputForm({ users }) {
       >
         {({ values, handleChange, errors, setFieldValue }) => (
           <Form>
-            <div>
+            <div className={classes.formElement}>
               <Autocomplete
                 options={users}
                 getOptionLabel={(option) =>
@@ -102,7 +110,7 @@ function InputForm({ users }) {
                 )}
               />
             </div>
-            <div>
+            <div className={classes.formElement}>
               <TextField
                 required
                 type="datetime-local"
@@ -113,7 +121,7 @@ function InputForm({ users }) {
                 helperText={errors.startAt}
               />
             </div>
-            <div>
+            <div className={classes.formElement}>
               <TextField
                 required
                 type="datetime-local"
@@ -124,11 +132,19 @@ function InputForm({ users }) {
                 helperText={errors.endAt}
               />
             </div>
-            <LoadingButton
-              loading={isSubmitting}
-              success={success}
-              type="submit"
-            />
+            <div className={`${classes.formElement} ${classes.actions}`}>
+              <LoadingButton
+                loading={isSubmitting}
+                success={success}
+                type="submit"
+              />
+
+              <Button className={classes.cancelButton}>
+                <Link className={classes.link} to="/dashboard">
+                  Cancel
+                </Link>
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>
@@ -138,7 +154,7 @@ function InputForm({ users }) {
         severity={notificationSeverity}
         onClose={() => setShowingNotification(false)}
       />
-    </div>
+    </>
   );
 }
 

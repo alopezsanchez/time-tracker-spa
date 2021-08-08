@@ -4,9 +4,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 import { purple } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   wrapper: {
-    margin: theme.spacing(1),
     position: "relative",
     display: "inline-block",
   },
@@ -30,7 +29,6 @@ const LoadingButton = ({ loading, success, type }) => {
         type={type}
         variant="contained"
         color="primary"
-        // className={buttonClassname}
         disabled={loading}
       >
         Submit

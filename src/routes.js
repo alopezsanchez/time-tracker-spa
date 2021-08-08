@@ -7,19 +7,22 @@ import {
 import InputPage from "./pages/Input";
 import DashboardPage from "./pages/Dashboard";
 
-export default function Routes() {
+export default function Routes({ children }) {
   return (
-    <Router>
-      <Switch>
-        <Route path="/input">
-          <InputPage />
-        </Route>
-        <Route path="/dashboard">
-          <DashboardPage />
-        </Route>
-        <Redirect from="/" to="/dashboard" />
-        <Redirect from="*" to="/dashboard" />
-      </Switch>
-    </Router>
+    <>
+      <Router>
+        {children}
+        <Switch>
+          <Route path="/input">
+            <InputPage />
+          </Route>
+          <Route path="/dashboard">
+            <DashboardPage />
+          </Route>
+          <Redirect from="/" to="/dashboard" />
+          <Redirect from="*" to="/dashboard" />
+        </Switch>
+      </Router>
+    </>
   );
 }

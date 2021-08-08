@@ -19,8 +19,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <TopBar />
-        <Routes />
+        <Routes>
+          <TopBar />
+        </Routes>
       </div>
     </ThemeProvider>
   );
