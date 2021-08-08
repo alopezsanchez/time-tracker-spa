@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useSnackbar } from "notistack";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import moment from "moment";
@@ -9,7 +10,6 @@ import { Autocomplete } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import { createInput } from "../../../services/api";
 import LoadingButton from "./LoadingButton";
-import Notification from "./Notification";
 
 const transformFormValuesToApiPayload = (values) => ({
   user: values.user._id,
@@ -36,9 +36,7 @@ const useStyles = makeStyles((theme) => ({
 function InputForm({ users }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [showingNotification, setShowingNotification] = useState(false);
-  const [notificationSeverity, setNotificationSeverity] = useState("");
-  const [notificationMessage, setNotificationMessage] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const classes = useStyles();
 
@@ -69,17 +67,15 @@ function InputForm({ users }) {
           try {
             await createInput(payload);
             setSuccess(true);
-            setNotificationSeverity("success");
-            setNotificationMessage("Your input has been saved");
+            enqueueSnackbar("The input has been saved", { variant: "success" });
             actions.resetForm();
           } catch (error) {
-            setNotificationSeverity("error");
-            setNotificationMessage(
-              "An error has been raised. Please, try again later"
+            enqueueSnackbar(
+              "Error creating the user input, Please, try again later",
+              { variant: "error" }
             );
           } finally {
             setIsSubmitting(false);
-            setShowingNotification(true);
           }
         }}
       >
@@ -147,12 +143,6 @@ function InputForm({ users }) {
           </Form>
         )}
       </Formik>
-      <Notification
-        opened={showingNotification}
-        message={notificationMessage}
-        severity={notificationSeverity}
-        onClose={() => setShowingNotification(false)}
-      />
     </>
   );
 }

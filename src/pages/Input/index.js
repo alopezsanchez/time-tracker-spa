@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
 import { Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { fetchUsers } from "../../services/api";
@@ -23,12 +24,24 @@ const useStyles = makeStyles(() => ({
 
 export default function InputPage() {
   const [users, setUsers] = useState([]);
+  const { enqueueSnackbar } = useSnackbar();
 
   const classes = useStyles();
 
   useEffect(() => {
-    fetchUsers().then((users) => setUsers(users));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const fetchedUsers = await fetchUsers();
+        setUsers(fetchedUsers);
+      } catch (error) {
+        enqueueSnackbar("Error fetching users. Please, try again later", {
+          variant: "error",
+        });
+      }
+    };
+
+    fetchData();
+  }, [enqueueSnackbar]);
 
   return (
     <div className={classes.root}>

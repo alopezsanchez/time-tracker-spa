@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchUsers, fetchInputsByUser } from "../../services/api";
+import { useSnackbar } from "notistack";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { fetchUsers, fetchInputsByUser } from "../../services/api";
 import LoadingBackdrop from "../../components/layout/LoadingBackdrop";
 import calculateOvertimeHours from "../../utils/calculateOvertimeHours";
 import calculateOvertimeAveragePerDay from "../../utils/calculateOvertimeAveragePerDay";
@@ -45,6 +46,7 @@ const DashboardPage = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [inputs, setInputs] = useState([]);
   const [showInformation, setShowInformation] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const classes = useStyles();
 
@@ -55,14 +57,16 @@ const DashboardPage = () => {
         const fetchedUsers = await fetchUsers();
         setUsers(fetchedUsers);
       } catch (error) {
-        console.log(error);
+        enqueueSnackbar("Error fetching users. Please, try again later", {
+          variant: "error",
+        });
       } finally {
         setLoadingUsers(false);
       }
     }
 
     fetchData();
-  }, []);
+  }, [enqueueSnackbar]);
 
   const handleUserChange = async (event, user) => {
     try {
@@ -78,6 +82,10 @@ const DashboardPage = () => {
       }
     } catch (error) {
       console.log(error);
+      enqueueSnackbar(
+        "Error fetching the user information. Please, try again later",
+        { variant: "error" }
+      );
     } finally {
       setLoadingInputs(false);
     }

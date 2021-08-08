@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@material-ui/styles";
+import { SnackbarProvider } from "notistack";
 import { createTheme } from "@material-ui/core/styles";
 import { deepPurple, orange } from "@material-ui/core/colors";
 import Routes from "./routes";
@@ -18,11 +19,13 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Routes>
-          <TopBar />
-        </Routes>
-      </div>
+      <SnackbarProvider maxSnack={5}>
+        <div>
+          <Routes>
+            <TopBar />
+          </Routes>
+        </div>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }
