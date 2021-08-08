@@ -10,12 +10,24 @@ import SearchUser from "./components/SearchUser";
 import WorkingHoursPerDayChart from "./components/WorkingHoursPerDayChart";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "3rem",
+  },
+  informationContainer: {
+    marginTop: "3rem",
+    display: "block",
+    width: "100%",
+  },
   cardsContainer: {
-    display: "grid",
-    gridTemplateColumns: "auto",
-    gridAutoFlow: "column",
-    gridGap: "10px",
-    alignItems: "start",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    marginBottom: "3rem",
   },
   chartsContainer: {
     display: "flex",
@@ -75,8 +87,8 @@ const DashboardPage = () => {
   }
 
   return (
-    <div>
-      <Typography variant="h5">
+    <div className={classes.root}>
+      <Typography variant="h4" gutterBottom>
         See what's happening with your employees
       </Typography>
       <SearchUser
@@ -85,7 +97,7 @@ const DashboardPage = () => {
         loading={loadingInputs}
       />
       {showInformation && activeUser && inputs && (
-        <div>
+        <div className={classes.informationContainer}>
           <div className={classes.cardsContainer}>
             <CustomCard
               value={calculateOvertimeHours(inputs)}

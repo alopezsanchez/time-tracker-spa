@@ -6,6 +6,7 @@ import millisecondsToHours from "../../../utils/millisecondsToHours";
 const useStyles = makeStyles((theme) => ({
   chartContainer: {
     maxWidth: "1200px",
+    width: "100%",
   },
 }));
 
@@ -37,7 +38,7 @@ const WorkingHoursPerDayChart = ({ inputs }) => {
 
   return (
     <div className={classes.chartContainer}>
-      <Bar width="1200" height="600" data={data} options={options} />
+      <Bar data={data} options={options} />
     </div>
   );
 };

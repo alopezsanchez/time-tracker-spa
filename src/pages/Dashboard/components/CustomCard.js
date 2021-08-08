@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     maxWidth: 200,
     minHeight: 100,
     flex: "1 1 auto",
+    marginRight: "20px",
   },
   value: {
     fontSize: 24,

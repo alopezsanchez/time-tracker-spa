@@ -2,10 +2,21 @@ import PropTypes from "prop-types";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(1),
+    minWidth: "30%",
+  },
+}));
 
 const SearchUser = ({ users, handleChange, loading }) => {
+  const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.root}>
       <Autocomplete
         options={users}
         getOptionLabel={(option) => `${option.name} (${option.username})`}
