@@ -18,6 +18,7 @@ export default function Routes() {
           <DashboardPage />
         </Route>
         <Redirect from="/" to="/dashboard" />
+        <Redirect from="*" to="/dashboard" />
       </Switch>
     </Router>
   );
