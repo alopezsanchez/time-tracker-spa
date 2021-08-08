@@ -5,11 +5,7 @@ import { ArrowBack } from "@material-ui/icons";
 
 const GoBackButton = ({ history }) => {
   return (
-    <IconButton
-      style={{ color: "white" }}
-      aria-label="delete"
-      onClick={() => history.goBack()}
-    >
+    <IconButton style={{ color: "white" }} aria-label="delete" onClick={() => history.goBack()}>
       <ArrowBack />
     </IconButton>
   );
@@ -17,7 +13,7 @@ const GoBackButton = ({ history }) => {
 
 GoBackButton.displayName = "GoBackButton";
 GoBackButton.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(GoBackButton);

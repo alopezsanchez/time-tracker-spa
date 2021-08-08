@@ -8,12 +8,12 @@ import TopBar from "./components/layout/TopBar";
 const theme = createTheme({
   palette: {
     secondary: {
-      main: orange[500],
+      main: orange[500]
     },
     primary: {
-      main: deepPurple[400],
-    },
-  },
+      main: deepPurple[400]
+    }
+  }
 });
 
 function App() {

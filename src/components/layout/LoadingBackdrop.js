@@ -5,8 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   backdrop: {
-    color: "#fff",
-  },
+    color: "#fff"
+  }
 }));
 
 const LoadingBackdrop = ({ loading }) => {
@@ -21,7 +21,7 @@ const LoadingBackdrop = ({ loading }) => {
 
 LoadingBackdrop.displayName = "LoadingBackdrop";
 LoadingBackdrop.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default LoadingBackdrop;

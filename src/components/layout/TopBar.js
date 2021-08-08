@@ -5,15 +5,15 @@ import GoBackButton from "./GoBackButton";
 
 const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   link: {
     textDecoration: "none",
-    color: "white",
-  },
+    color: "white"
+  }
 }));
 
 const TopBar = () => {

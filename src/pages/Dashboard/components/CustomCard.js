@@ -7,19 +7,19 @@ const useStyles = makeStyles({
     maxWidth: 200,
     minHeight: 100,
     flex: "1 1 auto",
-    marginRight: "20px",
+    marginRight: "20px"
   },
   value: {
     fontSize: 24,
-    textAlign: "center",
+    textAlign: "center"
   },
   title: {
     fontSize: 14,
-    textAlign: "center",
+    textAlign: "center"
   },
   pos: {
-    marginBottom: 12,
-  },
+    marginBottom: 12
+  }
 });
 
 const CustomCard = ({ value, title }) => {
@@ -42,7 +42,7 @@ const CustomCard = ({ value, title }) => {
 CustomCard.displayName = "CustomCard";
 CustomCard.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 export default CustomCard;

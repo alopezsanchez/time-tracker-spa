@@ -11,26 +11,26 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createInput } from "../../../services/api";
 import LoadingButton from "./LoadingButton";
 
-const transformFormValuesToApiPayload = (values) => ({
+const transformFormValuesToApiPayload = values => ({
   user: values.user._id,
   startAt: +new Date(values.startAt),
-  endAt: +new Date(values.endAt),
+  endAt: +new Date(values.endAt)
 });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   formElement: {
-    margin: "30px",
+    margin: "30px"
   },
   actions: {
-    alignItems: "center",
+    alignItems: "center"
   },
   cancelButton: {
-    marginLeft: "20px",
+    marginLeft: "20px"
   },
   link: {
     textDecoration: "none",
-    color: theme.palette.primary.main,
-  },
+    color: theme.palette.primary.main
+  }
 }));
 
 function InputForm({ users }) {
@@ -43,17 +43,13 @@ function InputForm({ users }) {
   const validationSchema = yup.object().shape({
     user: yup.object().nullable().required("User is required"),
     startAt: yup.date().required("Start date is required"),
-    endAt: yup.date().required("End date is required"),
+    endAt: yup.date().required("End date is required")
   });
 
   const initialValues = {
     user: null,
-    startAt: moment(new Date())
-      .set({ hour: 8, minute: "00" })
-      .format("yyyy-MM-DDTHH:mm"),
-    endAt: moment(new Date())
-      .set({ hour: 17, minute: "00" })
-      .format("yyyy-MM-DDTHH:mm"),
+    startAt: moment(new Date()).set({ hour: 8, minute: "00" }).format("yyyy-MM-DDTHH:mm"),
+    endAt: moment(new Date()).set({ hour: 17, minute: "00" }).format("yyyy-MM-DDTHH:mm")
   };
 
   return (
@@ -70,10 +66,7 @@ function InputForm({ users }) {
             enqueueSnackbar("The input has been saved", { variant: "success" });
             actions.resetForm();
           } catch (error) {
-            enqueueSnackbar(
-              "Error creating the user input, Please, try again later",
-              { variant: "error" }
-            );
+            enqueueSnackbar("Error creating the user input, Please, try again later", { variant: "error" });
           } finally {
             setIsSubmitting(false);
           }
@@ -84,9 +77,7 @@ function InputForm({ users }) {
             <div className={classes.formElement}>
               <Autocomplete
                 options={users}
-                getOptionLabel={(option) =>
-                  `${option.name} (${option.username})`
-                }
+                getOptionLabel={option => `${option.name} (${option.username})`}
                 style={{ width: 300 }}
                 name="user"
                 value={values.user}
@@ -94,7 +85,7 @@ function InputForm({ users }) {
                 onChange={(event, newValue) => {
                   setFieldValue("user", newValue);
                 }}
-                renderInput={(params) => (
+                renderInput={params => (
                   <TextField
                     {...params}
                     label="User"
@@ -128,11 +119,7 @@ function InputForm({ users }) {
               />
             </div>
             <div className={`${classes.formElement} ${classes.actions}`}>
-              <LoadingButton
-                loading={isSubmitting}
-                success={success}
-                type="submit"
-              />
+              <LoadingButton loading={isSubmitting} success={success} type="submit" />
 
               <Button className={classes.cancelButton}>
                 <Link className={classes.link} to="/dashboard">
@@ -149,7 +136,7 @@ function InputForm({ users }) {
 
 InputForm.displayName = "InputForm";
 InputForm.propTypes = {
-  users: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired
 };
 
 export default InputForm;

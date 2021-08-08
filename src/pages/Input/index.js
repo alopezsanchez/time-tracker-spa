@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     padding: "3rem",
     alignItems: "center",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   paper: {
     padding: "16px",
@@ -18,8 +18,8 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    maxWidth: "30em",
-  },
+    maxWidth: "30em"
+  }
 }));
 
 export default function InputPage() {
@@ -35,7 +35,7 @@ export default function InputPage() {
         setUsers(fetchedUsers);
       } catch (error) {
         enqueueSnackbar("Error fetching users. Please, try again later", {
-          variant: "error",
+          variant: "error"
         });
       }
     };

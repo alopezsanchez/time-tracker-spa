@@ -11,32 +11,32 @@ import SearchUser from "./components/SearchUser";
 import WorkingHoursPerDayChart from "./components/WorkingHoursPerDayChart";
 import CreateInputButton from "./components/CreateInputButton";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    padding: "3rem",
+    padding: "3rem"
   },
   informationContainer: {
     marginTop: "3rem",
     display: "block",
-    width: "100%",
+    width: "100%"
   },
   cardsContainer: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    marginBottom: "3rem",
+    marginBottom: "3rem"
   },
   chartsContainer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 }));
 
 const DashboardPage = () => {
@@ -58,7 +58,7 @@ const DashboardPage = () => {
         setUsers(fetchedUsers);
       } catch (error) {
         enqueueSnackbar("Error fetching users. Please, try again later", {
-          variant: "error",
+          variant: "error"
         });
       } finally {
         setLoadingUsers(false);
@@ -82,10 +82,7 @@ const DashboardPage = () => {
       }
     } catch (error) {
       console.log(error);
-      enqueueSnackbar(
-        "Error fetching the user information. Please, try again later",
-        { variant: "error" }
-      );
+      enqueueSnackbar("Error fetching the user information. Please, try again later", { variant: "error" });
     } finally {
       setLoadingInputs(false);
     }
@@ -100,22 +97,12 @@ const DashboardPage = () => {
       <Typography variant="h4" gutterBottom>
         See what's happening with your employees
       </Typography>
-      <SearchUser
-        users={users}
-        handleChange={handleUserChange}
-        loading={loadingInputs}
-      />
+      <SearchUser users={users} handleChange={handleUserChange} loading={loadingInputs} />
       {showInformation && activeUser && inputs && (
         <div className={classes.informationContainer}>
           <div className={classes.cardsContainer}>
-            <CustomCard
-              value={calculateOvertimeHours(inputs)}
-              title="Overtime hours"
-            />
-            <CustomCard
-              value={calculateOvertimeAveragePerDay(inputs)}
-              title="Average overtime hours per day"
-            />
+            <CustomCard value={calculateOvertimeHours(inputs)} title="Overtime hours" />
+            <CustomCard value={calculateOvertimeAveragePerDay(inputs)} title="Average overtime hours per day" />
           </div>
           <div className={classes.chartsContainer}>
             <WorkingHoursPerDayChart inputs={inputs} />

@@ -3,11 +3,11 @@ import { Bar } from "react-chartjs-2";
 import { makeStyles } from "@material-ui/core/styles";
 import millisecondsToHours from "../../../utils/millisecondsToHours";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   chartContainer: {
     maxWidth: "1200px",
-    width: "100%",
-  },
+    width: "100%"
+  }
 }));
 
 const WorkingHoursPerDayChart = ({ inputs }) => {
@@ -15,25 +15,23 @@ const WorkingHoursPerDayChart = ({ inputs }) => {
 
   const options = {
     grouped: true,
-    responsive: true,
+    responsive: true
   };
 
   const data = {
-    labels: inputs.map((input) => new Date(input.startAt).toDateString()),
+    labels: inputs.map(input => new Date(input.startAt).toDateString()),
     datasets: [
       {
         label: "Working Hours",
-        data: inputs.map((input) =>
-          millisecondsToHours(+new Date(input.endAt) - +new Date(input.startAt))
-        ),
-        backgroundColor: "#8561c5",
+        data: inputs.map(input => millisecondsToHours(+new Date(input.endAt) - +new Date(input.startAt))),
+        backgroundColor: "#8561c5"
       },
       {
         label: "Overtime Hours",
-        data: inputs.map((input) => millisecondsToHours(input.overtime)),
-        backgroundColor: "#ff1744",
-      },
-    ],
+        data: inputs.map(input => millisecondsToHours(input.overtime)),
+        backgroundColor: "#ff1744"
+      }
+    ]
   };
 
   return (
@@ -45,7 +43,7 @@ const WorkingHoursPerDayChart = ({ inputs }) => {
 
 WorkingHoursPerDayChart.displayName = "WorkingHoursPerDayChart";
 WorkingHoursPerDayChart.propTypes = {
-  inputs: PropTypes.array.isRequired,
+  inputs: PropTypes.array.isRequired
 };
 
 export default WorkingHoursPerDayChart;
