@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import { Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { fetchUsers } from "../../services/api";
 import Form from "./components/Form";

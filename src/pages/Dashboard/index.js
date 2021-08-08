@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchUsers, fetchInputsByUser } from "../../services/api";
-import Typography from "@material-ui/core/Typography";
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LoadingBackdrop from "../../components/layout/LoadingBackdrop";
 import calculateOvertimeHours from "../../utils/calculateOvertimeHours";

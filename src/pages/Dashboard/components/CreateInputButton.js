@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
+import { Add } from "@material-ui/icons";
+import { Fab, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +20,7 @@ const CreateInputButton = () => {
   return (
     <Link to="/input">
       <Fab color="primary" variant="extended" className={classes.root}>
-        <AddIcon className={classes.icon} />
+        <Add className={classes.icon} />
         <Typography>Input hours</Typography>
       </Fab>
     </Link>

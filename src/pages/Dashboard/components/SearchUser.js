@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField from "@material-ui/core/TextField";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import { Autocomplete } from "@material-ui/lab";
+import { TextField, LinearProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({

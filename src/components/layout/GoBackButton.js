@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
+import { IconButton } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
 
 const GoBackButton = ({ history }) => {

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+import { Snackbar } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 
 const Notification = ({ message, opened, onClose, severity }) => {
   return (
@@ -13,9 +13,9 @@ const Notification = ({ message, opened, onClose, severity }) => {
       autoHideDuration={6000}
       onClose={onClose}
     >
-      <MuiAlert elevation={6} variant="filled" severity={severity}>
+      <Alert elevation={6} variant="filled" severity={severity}>
         {message}
-      </MuiAlert>
+      </Alert>
     </Snackbar>
   );
 };
