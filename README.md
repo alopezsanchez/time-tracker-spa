@@ -1,8 +1,8 @@
-# Time tracking SPA
+# Time tracker SPA
 
 ## Introduction
 
-Frontend of a time tracking application for employees of a company.
+Frontend of a time tracker application for employees of a company.
 In this MVP, you can input hours of work per day and see statistics of hours worked and overtime hours for each user.
 
 ![User stats](./docs/images/demo01.png)

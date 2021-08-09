@@ -27,7 +27,7 @@ const TopBar = () => {
           {location.pathname !== "/dashboard" ? <GoBackButton /> : null}
           <Link className={classes.link} to="/">
             <Typography variant="h6" className={classes.title}>
-              Time Tracking
+              Time Tracker
             </Typography>
           </Link>
         </Toolbar>
